@@ -1,0 +1,38 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: Reggie  # 应用名称，可选项
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+  redis:
+    host: localhost  # 本地开发填localhost，服务器填 Redis IP
+    port: 6379       # Redis端口，默认6379（如果改了要对应）
+    password: ""     # Redis密码（无密码则留空，有密码必须填）
+    database: 0      # 使用0号数据库（默认）
+    timeout: 10000   # 连接超时时间（可选）
+    lettuce:
+      pool:
+        max-active: 8   # 最大连接数
+        max-idle: 8     # 最大空闲连接
+        min-idle: 0     # 最小空闲连接
+
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启 MyBatis 的 SQL 日志输出，将执行的 SQL 语句、参数、结果等打印到控制台，方便开发调试。
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID  # 指定实体类主键（@TableId标注的字段）的默认生成方式为ASSIGN_ID,使用 MyBatis-Plus 内置的雪花算法生成Long 类型的 64 位唯一 ID（非自增）
+
+reggie:
+  path: D:\idea2024_JavaSave\Reggie\Server_Save_Path\
+
+aliyun:
+  access-key: 
+  access-secret: 
