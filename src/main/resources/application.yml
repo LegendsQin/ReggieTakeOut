@@ -3,6 +3,17 @@ server:
 spring:
   application:
     name: Reggie  # 应用名称，可选项
+  config:
+    # optional: 是一个修饰符，作用是：
+    #如果指定的配置文件存在，Spring Boot 会加载它；
+    #如果文件不存在，不会抛出 FileNotFoundException 等异常，程序仍能正常启动。
+    #如果去掉 optional:，当 .env 文件不存在时，项目启动会直接失败。
+
+    # classpath:   指向类路径, 把.env放在resources下，运行程序之后，.env就直接到了target/classes中，从target/classes中搜索.env
+
+    # [.properties]：是 Spring 的格式转换标识，表示将 .env 文件按照 properties 格式解析（即使文件没有 .properties 后缀）。
+    import: optional:classpath:.env[.properties]
+
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -34,5 +45,5 @@ reggie:
   path: D:\idea2024_JavaSave\Reggie\Server_Save_Path\
 
 aliyun:
-  access-key: 
-  access-secret: 
+  access-key: ${MY_ALIYUN_ACCESS_KEY}
+  access-secret: ${MY_ALIYUN_ACCESS_SECRET}

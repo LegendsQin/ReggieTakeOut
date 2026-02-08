@@ -104,7 +104,12 @@
             <version>4.6.0</version>
         </dependency>
 
-
+        <!-- dotenv-java：读取.env文件的核心依赖 -->
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.0.0</version> <!-- 建议使用最新版本 -->
+        </dependency>
 
 
     </dependencies>
